@@ -4,32 +4,29 @@ import ApiCall from "../components/ApiCall";
 
 const ItemDetection = () => {
   const [imageUrl, setImageUrl] = useState("");
-  const [apiCallTriggered, setApiCallTriggered] = useState(false);
-
   const [apiData, setApiData] = useState([]);
+  const [isApiCallPending, setApiCallPending] = useState(false);
 
   const setImageUrlHandler = (e) => {
     setImageUrl(e.target.value);
-    // Reset the apiCallTriggered state when you set a new image URL
-    setApiCallTriggered(false);
+    setApiData([]); // Clear previous API data when a new URL is set
   };
 
   const setApiCallTriggeredHandler = () => {
-    // If apiCallTriggered is already true, perform the API call again
-    if (apiCallTriggered) {
-      setApiCallTriggered(false); // Reset to false first
+    if (imageUrl && !isApiCallPending) {
+      setApiCallPending(true);
     }
-    setApiCallTriggered(true);
-  };
-
-  const setApiDataHandler = (event) => {
-    setApiData(event.target.value);
   };
 
   const clearUrlHandler = () => {
     setImageUrl("");
-    // Reset the apiCallTriggered state when you clear the URL
-    setApiCallTriggered(false);
+    setApiData([]); // Clear previous API data when the URL is cleared
+  };
+
+  // Function to handle the API response
+  const setApiDataHandler = (data) => {
+    setApiData(data);
+    setApiCallPending(false); // Reset the API call status
   };
 
   return (
@@ -54,9 +51,30 @@ const ItemDetection = () => {
           </div>
         </div>
       )}
-      {apiCallTriggered && imageUrl && (
+      {isApiCallPending && imageUrl && (
         <ApiCall setApiDataHandler={setApiDataHandler} imageUrl={imageUrl} />
       )}
+      {/* Display the API data */}
+      <div>
+        {apiData &&
+        apiData.status &&
+        apiData.status.description === "Failure" ? (
+          <p>No data for this image.</p>
+        ) : apiData && apiData.status && apiData.status.description === "Ok" ? (
+          <div>
+            <h3>Concepts:</h3>
+            <ul>
+              {apiData.outputs[0].data.concepts.map((concept, index) => (
+                <li key={index}>
+                  {concept.name}, Value: {concept.value}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <p></p>
+        )}
+      </div>
     </div>
   );
 };

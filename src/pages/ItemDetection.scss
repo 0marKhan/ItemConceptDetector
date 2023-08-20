@@ -1,0 +1,23 @@
+// ItemDetection.scss
+
+.input-image-container {
+  display: flex;
+  flex-direction: column; // Stack children vertically
+  align-items: center; // Center children horizontally
+  text-align: center; // Center text horizontally
+
+  .input-image {
+    width: 40%;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .button-container {
+    margin-top: 10px; // Adjust spacing between buttons and image
+  }
+
+  button {
+    margin: 5px; // Add spacing between buttons
+  }
+}

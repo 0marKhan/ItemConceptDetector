@@ -59,7 +59,7 @@ const ApiCall = ({ imageUrl, setApiDataHandler }) => {
   )
     .then((response) => response.json())
     .then((result) => {
-      console.log(result);
+      // console.log(result);
       setApiDataHandler(result);
     })
     .catch((error) => console.log("error", error));

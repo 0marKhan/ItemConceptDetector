@@ -50,7 +50,7 @@ const ItemDetection = () => {
       if (conceptsData) {
         conceptsData.scrollIntoView({ behavior: "smooth" });
       }
-    }, 1500); // 3000 milliseconds (3 seconds) delay
+    }, 1800);
   };
 
   //for modal

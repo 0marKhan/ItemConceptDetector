@@ -5,7 +5,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 const ApiCall = ({ imageUrl, setApiDataHandler }) => {
   const [loading, setLoading] = useState(true); // Initialize loading state
 
-  const PAT = "3f6a745da23f434eb1b936434470a66c";
+  const PAT = "5bbe26035eeb482a9a8420e2d6acf6ee";
   const USER_ID = "clarifai";
   const APP_ID = "main";
   const MODEL_ID = "general-image-recognition";

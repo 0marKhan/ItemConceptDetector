@@ -40,6 +40,17 @@ const MaterialModal = ({ open, handleClose }) => {
     setTimeout(() => setCopied3(false), 3000);
   };
 
+  // Determine the modal width based on screen size
+  const modalWidth = window.innerWidth <= 641 ? "300px" : "400px";
+
+  // Define styles for the text, including right margin when modalWidth is 300px
+  const textStyles = {
+    mt: 2,
+    fontSize: modalWidth === "300px" ? "14px" : "inherit",
+    marginRight: modalWidth === "300px" ? "0rem" : "inherit",
+    overflowWrap: "break-word", // Allow text to wrap onto the next line
+  };
+
   return (
     <Modal
       open={open}
@@ -47,17 +58,23 @@ const MaterialModal = ({ open, handleClose }) => {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box sx={style}>
+      <Box
+        sx={{
+          ...style,
+          width: modalWidth, // Set the width based on screen size
+        }}
+      >
         <Typography id="modal-modal-title" variant="h6" component="h2">
           Example URLs
         </Typography>
-        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+        <Typography id="modal-modal-description" sx={textStyles}>
           Example URL 1:
           https://images.pexels.com/photos/2055100/pexels-photo-2055100.jpeg
           <br />
           <CopyToClipboard text="https://images.pexels.com/photos/2055100/pexels-photo-2055100.jpeg">
             <Button
               className="modal-button"
+              style={{ marginTop: "1rem" }}
               onClick={handleCopy1}
               variant="contained"
               color="primary"
@@ -73,6 +90,7 @@ const MaterialModal = ({ open, handleClose }) => {
           <CopyToClipboard text="https://images.pexels.com/photos/699459/pexels-photo-699459.jpeg">
             <Button
               className="modal-button"
+              style={{ marginTop: "1rem" }}
               onClick={handleCopy2}
               variant="contained"
               color="primary"
@@ -88,6 +106,7 @@ const MaterialModal = ({ open, handleClose }) => {
           <CopyToClipboard text="https://img.freepik.com/free-photo/grapes-strawberries-pineapple-kiwi-apricot-banana-whole-pineapple_23-2147968680.jpg">
             <Button
               className="modal-button"
+              style={{ marginTop: "1rem" }}
               onClick={handleCopy3}
               variant="contained"
               color="primary"

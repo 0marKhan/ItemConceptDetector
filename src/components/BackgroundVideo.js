@@ -11,10 +11,10 @@ const BackgroundVideo = () => {
       <div className="content">
         <h1>Item Detector</h1>
         <p>
-          A website that uses the clarify API to detect items from images and
-          display their concepts
+          Identifies a variety of concepts in images including objects, themes,
+          and more. Trained with over 10,000 concepts and 20M images.
         </p>
-        <Link to="face-detect-page" className="button1">
+        <Link to="item-detect-page" className="button1">
           Try It Out
         </Link>
       </div>

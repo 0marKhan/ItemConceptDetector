@@ -8,7 +8,7 @@ function App() {
     <div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/face-detect-page" element={<ItemDetection />} />
+        <Route path="/item-detect-page" element={<ItemDetection />} />
       </Routes>
     </div>
   );

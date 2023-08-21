@@ -1,3 +1,9 @@
-.modal-button {
+.modal-container .modal-button button {
   margin-top: 1rem;
+}
+
+@media (max-width: 641px) {
+  .modal-container {
+    width: 350px;
+  }
 }

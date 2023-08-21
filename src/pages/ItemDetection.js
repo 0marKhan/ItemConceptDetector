@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./ItemDetection.scss";
 import ApiCall from "../components/ApiCall";
 import { Link } from "react-router-dom";
-import Modal from "@mui/material/Modal";
+
 import Tooltip from "@mui/material/Tooltip";
 
 import ArrowDownwardSharpIcon from "@mui/icons-material/ArrowDownwardSharp";
@@ -42,6 +42,15 @@ const ItemDetection = () => {
     if (conceptsData) {
       conceptsData.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const autoScrollToConceptsData = () => {
+    setTimeout(() => {
+      const conceptsData = document.getElementById("concepts-data");
+      if (conceptsData) {
+        conceptsData.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 1500); // 3000 milliseconds (3 seconds) delay
   };
 
   //for modal
@@ -84,10 +93,17 @@ const ItemDetection = () => {
       {imageUrl && (
         <div className="input-image-container">
           <div className="button-container">
-            <button onClick={setApiCallTriggeredHandler}>Get Concepts</button>
+            <button
+              onClick={() => {
+                setApiCallTriggeredHandler();
+                autoScrollToConceptsData();
+              }}
+            >
+              Get Concepts
+            </button>
             <button onClick={clearUrlHandler}>Clear</button>
           </div>
-          <img className="input-image" src={imageUrl} alt="image" />
+          <img className="input-image" src={imageUrl} alt="concepts input" />
         </div>
       )}
       {isApiCallPending && imageUrl && (
@@ -102,6 +118,7 @@ const ItemDetection = () => {
         ) : apiData && apiData.status && apiData.status.description === "Ok" ? (
           <div className="concepts-container">
             <h3 className="concepts-heading">Concepts</h3>
+            <h4 className="concepts-subheading">concept prediction out of 1</h4>
             <ul className="concepts">
               {apiData.outputs[0].data.concepts.map((concept, index) => (
                 <li key={index}>

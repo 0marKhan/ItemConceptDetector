@@ -34,6 +34,8 @@ This website identifies a variety of concepts in images including objects, theme
 
 ## Click on the link to watch the video demo
 
+[Item Detector](https://youtu.be/4lWT5P4UlUk)
+
 ## How to get the project working on your device
 
 - clone the repository

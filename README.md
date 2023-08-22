@@ -9,11 +9,20 @@ This website identifies a variety of concepts in images including objects, theme
 </p>
 
 - takes an input URL from the user
+
+<p align="center">
+    <img src="./input-image.png" alt="website image" width="1347"  border="10"/>
+</p>
+  
 - once the image is uploaded you get buttons to generate concepts or clear the image
 - if you click on the clear button it removes the URL and the image
 - if you click on the generate concepts button, it sets the API call pending state to true
 - this pending state is passed to the API call, and after the API call is made the API pending state is set to false as the API call is made
 - the concepts data is retrieved from the clarifai API and displayed for the inputed image
+
+<p align="center">
+    <img src="./concepts.png" alt="website image" width="1347"  border="10"/>
+</p>
 
 ## Technologies Used
 

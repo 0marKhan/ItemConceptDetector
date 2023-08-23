@@ -49,7 +49,6 @@ This website identifies a variety of concepts in images including objects, theme
 - create an account on Clarifai
 - to see the model API go to [Clarifai API](https://clarifai.com/clarifai/main/models/general-image-recognition)
 - replace the pat key with your personal Clarifai pat key 
-- copy your API key and replace it with the API key currently in the project
 - run the project
    ```sh
      npm start

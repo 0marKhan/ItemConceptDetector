@@ -34,6 +34,7 @@ const ItemDetection = () => {
   const setApiDataHandler = (data) => {
     setApiData(data);
     setApiCallPending(false); // Reset the API call status
+    autoScrollToConceptsData(); // scroll to concepts when they load
   };
 
   // Function to scroll smoothly to concepts-data
@@ -45,12 +46,10 @@ const ItemDetection = () => {
   };
 
   const autoScrollToConceptsData = () => {
-    setTimeout(() => {
-      const conceptsData = document.getElementById("concepts-data");
-      if (conceptsData) {
-        conceptsData.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 1800);
+    const conceptsData = document.getElementById("concepts-data");
+    if (conceptsData) {
+      conceptsData.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   //for modal
@@ -93,14 +92,7 @@ const ItemDetection = () => {
       {imageUrl && (
         <div className="input-image-container">
           <div className="button-container">
-            <button
-              onClick={() => {
-                setApiCallTriggeredHandler();
-                autoScrollToConceptsData();
-              }}
-            >
-              Get Concepts
-            </button>
+            <button onClick={setApiCallTriggeredHandler}>Get Concepts</button>
             <button onClick={clearUrlHandler}>Clear</button>
           </div>
           <img className="input-image" src={imageUrl} alt="concepts input" />

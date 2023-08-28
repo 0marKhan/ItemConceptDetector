@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ItemDetection.scss";
 import ApiCall from "../components/ApiCall";
 import { Link } from "react-router-dom";
@@ -34,7 +34,6 @@ const ItemDetection = () => {
   const setApiDataHandler = (data) => {
     setApiData(data);
     setApiCallPending(false); // Reset the API call status
-    autoScrollToConceptsData(); // scroll to concepts when they load
   };
 
   // Function to scroll smoothly to concepts-data
@@ -51,6 +50,14 @@ const ItemDetection = () => {
       conceptsData.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  // Use useEffect to scroll when apiData is updated
+  useEffect(() => {
+    // Scroll to concepts only when apiData is available and status is "Ok"
+    if (apiData.status && apiData.status.description === "Ok") {
+      autoScrollToConceptsData();
+    }
+  }, [apiData]);
 
   //for modal
   const handleOpen = () => {

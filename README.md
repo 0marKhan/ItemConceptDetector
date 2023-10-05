@@ -2,6 +2,8 @@
 
 ## Uses the Clarifai API to access the trained general-image-recognition model
 
+## (View the website live)[]
+
 This website identifies a variety of concepts in images including objects, themes, and more. Trained with over 10,000 concepts and 20M images
 
 <p align="center">
